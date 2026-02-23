@@ -14,14 +14,27 @@ interface Product {
   image: string;
   rating: Rating;
 }
+export const dynamic = "force-dynamic";
+
+async function getWomens() {
+  const res = await fetch(
+    "https://fakestoreapi.com/products/category/women%27s%20clothing",
+    { cache: "no-store" } // important
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch men");
+  }
+
+  return res.json();
+}
 
 async function ProductContainer() {
-  const response = await fetch(`https://fakestoreapi.com/products/category/women%27s%20clothing`);
-  const data: Product[] = await response.json();
+  const response : Product[] = await getWomens()
   return (
     <div className="w-full py-5">
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {data.map((product) => (
+        {response.map((product) => (
           <ProductCard product={product} key={product.id} />
         ))}
       </div>

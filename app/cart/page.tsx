@@ -25,7 +25,7 @@ function page() {
   }, [mounted, token, router]);
 
   if (!mounted) {
-    return null; // prevents hydration mismatch
+    return null; 
   }
   if (!token) return null;
 

@@ -11,7 +11,7 @@ export default function HeaderCartCount() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null; // prevent hydration mismatch
+  if (!mounted) return null;
 
   return (
     <span>
