@@ -1,0 +1,32 @@
+import ProductCard from "./ProductCard";
+
+interface Rating {
+  rate: number;
+  count: number;
+}
+
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: Rating;
+}
+
+async function ProductContainer() {
+  const response = await fetch(`https://fakestoreapi.com/products/category/men%27s%20clothing`);
+  const data: Product[] = await response.json();
+  return (
+    <div className="w-full py-5">
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {data.map((product) => (
+          <ProductCard product={product} key={product.id} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default ProductContainer;
