@@ -2,34 +2,11 @@
 import CartItem from "@/components/cart/CartItem";
 import CartSummary from "@/components/cart/CartSummary";
 import { useAppSelector } from "@/lib/hooks";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 
 function page() {
   const products = useAppSelector((state) => state.cart.products);
-  const token = useAppSelector((state) => state.auth.token);
-  const router = useRouter();
 
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (mounted && !token) {
-      toast.error("Please login to view cart 🔒");
-      router.replace("/login");
-    }
-  }, [mounted, token, router]);
-
-  if (!mounted) {
-    return null; 
-  }
-  if (!token) return null;
-
-  if (products.length === 0 && !token) {
+  if (products.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center text-xl">
         Your cart is empty 🛒
