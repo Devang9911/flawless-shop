@@ -15,23 +15,17 @@ interface Product {
   rating: Rating;
 }
 
-async function getAccessories(): Promise<Product[]> {
-  try {
-    const res = await fetch(
-      "https://fakestoreapi.com/products/category/jewelery",
-      { cache: "no-store" }
-    );
+async function getAccessories() {
+  const res = await fetch(
+    "https://fakestoreapi.com/products/category/jewelery",
+    { cache: "no-store" },
+  );
 
-    if (!res.ok) {
-      console.error("API Error:", res.status);
-      return [];
-    }
-
-    return await res.json();
-  } catch (error) {
-    console.error("Fetch failed:", error);
-    return [];
+  if (!res.ok) {
+    throw new Error("Failed to fetch accessories");
   }
+
+  return res.json();
 }
 
 async function ProductContainer() {
