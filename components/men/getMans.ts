@@ -21,6 +21,7 @@ export async function getMens(): Promise<Product[]> {
         cache: "no-store",
       },
     );
+    console.log(res.status)
 
     if (!res.ok) {
       console.error("API failed:", res.status);
