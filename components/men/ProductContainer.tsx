@@ -23,6 +23,7 @@ async function getMens() {
 
   if (!res.ok) {
     throw new Error("Failed to fetch men");
+    return []
   }
 
   return res.json();

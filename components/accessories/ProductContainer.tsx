@@ -23,6 +23,7 @@ async function getAccessories() {
 
   if (!res.ok) {
     throw new Error("Failed to fetch accessories");
+    return []
   }
 
   return res.json();
