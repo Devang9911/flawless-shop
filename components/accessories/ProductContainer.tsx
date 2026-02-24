@@ -1,45 +1,26 @@
-import ProductCard from "./ProductCard";
+import ProductCard from "@/components/accessories/ProductCard";
+import { getAccessories, Product } from "@/components/accessories/getAccessories";
 
-interface Rating {
-  rate: number;
-  count: number;
-}
+export default async function AccessoriesPage() {
+  const products: Product[] = await getAccessories();
 
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: Rating;
-}
-
-async function getAccessories() {
-  const res = await fetch(
-    "https://fakestoreapi.com/products/category/jewelery",
-    { cache: "no-store" },
-  );
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch accessories");
-    return []
+  if (!products || products.length === 0) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-xl">
+        Accessories unavailable right now 😢
+      </div>
+    );
   }
 
-  return res.json();
-}
-
-async function ProductContainer() {
-  const response: Product[] = await getAccessories();
   return (
-    <div className="w-full py-5">
+    <div className="w-full py-10 px-6">
+      <h1 className="text-3xl font-bold mb-8">Accessories</h1>
+
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {response.map((product) => (
+        {products.map((product) => (
           <ProductCard product={product} key={product.id} />
         ))}
       </div>
     </div>
   );
 }
-
-export default ProductContainer;
