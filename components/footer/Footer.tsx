@@ -13,7 +13,7 @@ function Footer() {
             <div>
               <h4 className="font-semibold mb-3">Quick Links</h4>
               <ul className="space-y-2">
-                <li><Link href="/about">About</Link></li>
+                <li><Link href="/">About</Link></li>
               </ul>
             </div>
 

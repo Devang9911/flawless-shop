@@ -13,7 +13,7 @@ function MobileMenu({menuOpen , setMenuOpen} : Prop) {
     { name: "Men", href: "/men" },
     { name: "Women", href: "/women" },
     { name: "Accessories", href: "/accessories" },
-    { name: "Sign up", href: "/signup" },
+    { name: "Sign up", href: "/login" },
   ];
   return (
     <div
