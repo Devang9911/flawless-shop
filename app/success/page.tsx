@@ -27,8 +27,8 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
   const amount = (session.amount_total ?? 0) / 100;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="bg-white p-8 rounded-xl shadow-md text-center max-w-md">
+    <div className="flex items-center justify-center">
+      <div className="bg-white p-8 text-center max-w-md">
         <h1 className="text-2xl font-bold text-green-600 mb-4">
           🎉 Payment Successful!
         </h1>
