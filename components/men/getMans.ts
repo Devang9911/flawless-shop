@@ -14,29 +14,23 @@ export interface Product {
 }
 
 export async function getMens(): Promise<Product[]> {
-  const url =
-    "https://fakestoreapi.com/products/category/men%27s%20clothing";
-
   try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000);
-
-    const res = await fetch(url, {
-      cache: "no-store",
-      signal: controller.signal,
-    });
-
-    clearTimeout(timeout);
+    const res = await fetch(
+      "https://fakestoreapi.com/products/category/men%27s%20clothing",
+      {
+        cache: "no-store",
+      },
+    );
 
     if (!res.ok) {
-      console.error("Men API Error:", res.status);
+      console.error("API failed:", res.status);
       return [];
     }
 
     const data = await res.json();
     return data;
   } catch (error) {
-    console.error("Men Fetch Failed:", error);
+    console.error("Fetch error:", error);
     return [];
   }
 }

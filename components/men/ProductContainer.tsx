@@ -1,8 +1,6 @@
 import { getMens, Product } from "./getMans";
 import ProductCard from "./ProductCard";
 
-
-
 async function ProductContainer() {
   const response: Product[] = await getMens();
 

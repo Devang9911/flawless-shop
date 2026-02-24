@@ -12,31 +12,26 @@ export interface Product {
   image: string;
   rating: Rating;
 }
-
 export async function getAccessories(): Promise<Product[]> {
-  const url =
-    "https://fakestoreapi.com/products/category/jewelery";
-
   try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000);
-
-    const res = await fetch(url, {
-      cache: "no-store",
-      signal: controller.signal,
-    });
-
-    clearTimeout(timeout);
+    const res = await fetch(
+      "https://fakestoreapi.com/products/category/jewelery",
+      {
+        cache: "no-store",
+      },
+    );
 
     if (!res.ok) {
-      console.error("API Error:", res.status);
+      console.error("API failed:", res.status);
       return [];
     }
 
     const data = await res.json();
     return data;
   } catch (error) {
-    console.error("Fetch Failed:", error);
+    console.error("Fetch error:", error);
     return [];
   }
 }
+
+// https://fakestoreapi.com/products/category/jewelery
