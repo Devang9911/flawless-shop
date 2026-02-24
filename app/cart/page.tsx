@@ -2,9 +2,17 @@
 import CartItem from "@/components/cart/CartItem";
 import CartSummary from "@/components/cart/CartSummary";
 import { useAppSelector } from "@/lib/hooks";
+import { useEffect, useState } from "react";
 
-function page() {
+function Page() {
   const products = useAppSelector((state) => state.cart.products);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // 🔥 Prevent hydration mismatch
 
   if (products.length === 0) {
     return (
@@ -31,4 +39,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
