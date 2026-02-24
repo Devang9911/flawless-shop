@@ -18,6 +18,9 @@ export async function getWomens(): Promise<Product[]> {
     const res = await fetch(
       "https://fakestoreapi.com/products/category/women%27s%20clothing",
       {
+        headers: {
+          "User-Agent": "Mozilla/5.0",
+        },
         cache: "no-store",
       },
     );

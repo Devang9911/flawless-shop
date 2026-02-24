@@ -18,10 +18,13 @@ export async function getMens(): Promise<Product[]> {
     const res = await fetch(
       "https://fakestoreapi.com/products/category/men%27s%20clothing",
       {
+        headers: {
+          "User-Agent": "Mozilla/5.0",
+        },
         cache: "no-store",
       },
     );
-    console.log(res.status)
+    console.log(res.status);
 
     if (!res.ok) {
       console.error("API failed:", res.status);

@@ -17,6 +17,9 @@ export async function getAccessories(): Promise<Product[]> {
     const res = await fetch(
       "https://fakestoreapi.com/products/category/jewelery",
       {
+        headers: {
+          "User-Agent": "Mozilla/5.0",
+        },
         cache: "no-store",
       },
     );
