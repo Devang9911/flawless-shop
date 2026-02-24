@@ -109,7 +109,7 @@ async function ProductContainer() {
   }
 
   return (
-    <div className="w-full py-5">
+    <div className="w-full py-10">
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {response.map((product) => (
           <ProductCard product={product} key={product.id} />
